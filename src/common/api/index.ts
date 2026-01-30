@@ -18,6 +18,8 @@ const buildParamsPost = (met: string, data?: any) => {
       headers: {
         'Content-Type': 'application/json',
         'Accept-Language': 'ru-RU',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
       },
       body: JSON.stringify(data),
     };
@@ -27,6 +29,8 @@ const buildParamsPost = (met: string, data?: any) => {
     headers: {
       'Content-Type': 'application/json',
       'Accept-Language': 'ru-RU',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET',
     },
   };
 };
@@ -51,11 +55,12 @@ const buildParams = (met: string) => ({
   method: met,
   headers: {
     'Accept-Language': 'ru-RU',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET',
   },
 });
 
 const handleResponse = async (res: any) => {
-  localStorage.setItem('status', res.status);
   const status = String(res.status).substring(0, 1);
   if (status === '2') {
     try {
