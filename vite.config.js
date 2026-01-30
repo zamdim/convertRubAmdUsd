@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgrPlugin from 'vite-plugin-svgr';
 import checker from 'vite-plugin-checker';
+import path from 'path';
 
 export default defineConfig({
   base: '/convertRubAmdUsd/',
@@ -20,6 +21,8 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: [{ find: '@', replacement: '/src' }],
+    resolve: {
+      alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+    },
   },
 });
