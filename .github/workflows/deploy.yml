@@ -20,7 +20,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install  # Исправлено: npm install вместо npm ci
+        run: npm install --legacy-peer-deps  # Добавлен флаг --legacy-peer-deps
 
       - name: Build project
         run: npm run build
