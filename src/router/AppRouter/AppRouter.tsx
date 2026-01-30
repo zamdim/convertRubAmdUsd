@@ -12,11 +12,7 @@ const AppRouter: FC = () => {
       <>
         <Routes>
           <Route path={`${ErrorUrlEnum.ERROR}/*`} element={<ErrorHandler />} />
-          <Route
-            path="/convertRubAmdUsd"
-            element={<Navigate to={PublicRoutesEnum.CALCULATE} />}
-          />
-          <Route path={PublicRoutesEnum.CALCULATE} element={<Calculate />} />
+          <Route path={PublicRoutesEnum.ROOT} element={<Calculate />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </>

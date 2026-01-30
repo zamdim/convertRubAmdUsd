@@ -1,5 +1,6 @@
 export const enum PublicRoutesEnum {
   CALCULATE = '/calculate',
+  ROOT = '/convertRubAmdUsd',
 }
 
 export const enum ErrorUrlEnum {

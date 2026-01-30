@@ -37,10 +37,10 @@ const HeaderComponent: React.FC<IHeaderProps> = () => {
   const items: TabItem[] = [
     {
       label: 'Калькулятор',
-      href: PublicRoutesEnum.CALCULATE,
-      active: myLoc === PublicRoutesEnum.CALCULATE,
+      href: PublicRoutesEnum.ROOT,
+      active: myLoc === PublicRoutesEnum.ROOT,
       onClick: (e) => {
-        headerTransition(e, PublicRoutesEnum.CALCULATE);
+        headerTransition(e, PublicRoutesEnum.ROOT);
       },
     },
   ];
