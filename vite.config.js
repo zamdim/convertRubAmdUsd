@@ -5,7 +5,7 @@ import svgrPlugin from 'vite-plugin-svgr';
 import checker from 'vite-plugin-checker';
 
 export default defineConfig({
-  base: '/converter/',
+  base: '/convertRubAmdUsd/',
   plugins: [
     react(),
     viteTsconfigPaths(),
