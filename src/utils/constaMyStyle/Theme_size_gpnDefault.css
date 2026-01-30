@@ -1,0 +1,29 @@
+.Theme_size_myDefault {
+  /* Размер текста */
+  --size-text-2xs: 12px;
+  --size-text-xs: 14px;
+  --size-text-s: 16px;
+  --size-text-m: 18px;
+  --size-text-l: 20px;
+  --size-text-xl: 22px;
+  --size-text-2xl: 26px;
+  --size-text-3xl: 34px;
+  --size-text-4xl: 50px;
+  --size-text-5xl: 74px;
+  --size-text-6xl: 98px;
+
+  /* Межстрочный интервал */
+  --line-height-text-2xs: 1em;
+  --line-height-text-xs: 1.2em;
+  --line-height-text-s: 1.4em;
+  --line-height-text-m: 1.5em;
+  --line-height-text-l: 1.6em;
+
+  /* Ширина шрифта */
+  --font-weight-text-thin: 100;
+  --font-weight-text-light: 300;
+  --font-weight-text-regular: normal;
+  --font-weight-text-semibold: 600;
+  --font-weight-text-bold: bold;
+  --font-weight-text-black: 900;
+}

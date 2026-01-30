@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    align-items: center;
+
+    .image {
+      width: 420px;
+    }
+
+    @media (max-width: 524px) {
+      gap: 20px;
+      font-size: var(--size-text-m);
+
+      .image {
+        width: 295px;
+      }
+    }
+
+    @media (max-width: 401px) {
+      gap: 20px;
+      font-size: var(--size-text-m);
+
+      .image {
+        width: 295px;
+      }
+    }
+
+    @media (max-width: 401px) {
+      .image {
+        width: 270px;
+      }
+    }
+  }
+
+  & :global(.ResponsesImage-Svg) {
+    fill: var(--color-typo-ghost);
+    color: var(--color-typo-ghost);
+  }
+}

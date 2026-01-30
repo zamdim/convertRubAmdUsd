@@ -1,0 +1,75 @@
+body {
+    width: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.Modal-Window {
+    max-height: 90% !important;
+}
+
+.Modal{
+    z-index: 10!important;
+}
+
+@media screen and (max-width: 1600px) {
+    .Modal-Window {
+        max-height: 84% !important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .Modal-Window {
+        max-height: 78% !important;
+    }
+}
+
+.alertButton {
+    background: var(--color-typo-alert) !important;
+}
+
+.alertButton:hover {
+    background: var(--color-bg-alert) !important;
+}
+
+.SelectDropdown,
+.Modal {
+    z-index: 1;
+}
+
+.Popover {
+    z-index: 3;
+}
+
+.Popover_direction_upCenter .Tooltip-Background {
+    bottom: 10px;
+}
+
+.Popover_direction_upCenter .Tooltip-Arrow {
+    bottom: 10px;
+}
+
+.Popover_direction_upCenter .Tooltip-Content {
+    bottom: 5px;
+}
+
+.TableCell-Wrapper {
+    word-break: normal;
+}
+
+.DateTimeItem_disabled {
+    color: rgba(0,32,51,.26)!important;
+}

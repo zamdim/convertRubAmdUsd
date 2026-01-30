@@ -1,0 +1,59 @@
+.root
+  position fixed
+  width 100%
+  z-index 1
+
+  .hamburger
+    display none
+
+  @media (max-width 539px)
+    .headerModule
+      display none
+
+    .hamburger
+      display block
+
+  @media (max-width 424px)
+    &:global(.Header)
+      padding 0 16px
+
+  .logo
+    height: 60px
+    display block
+
+  .user
+    display flex
+    align-items: center
+
+  .userData
+    cursor pointer
+
+  .button
+    margin-right: 0
+    margin-left: auto
+
+  & :global(.HeaderMenu-Link_active::before)
+    max-width: initial;
+
+:global(.headerSidebar)
+  margin-top 60px
+  height calc(100dvh - 59px)
+  width 100dvw
+  background #fff
+  z-index 10
+
+  .headerSidebarContent
+    padding 24px
+
+    :global(.HeaderMenu-List)
+      flex-direction column
+
+    :global(.HeaderMenu-Link)
+      padding 10px
+      font-size 20px
+
+      &::before
+        max-width 100%
+
+
+    
