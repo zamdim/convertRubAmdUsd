@@ -12,22 +12,25 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # Обновлено до v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4  # Обновлено до v4
+        with:
+          node-version: '18'  # Рекомендую указать версию Node.js
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm ci  # Заменил на npm ci для более надежной установки
 
       - name: Build project
-        run: npm install && npm run build
+        run: npm run build
 
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Исправлено: v3 → v4
         with:
           name: production-files
           path: ./dist
+          retention-days: 1  # Опционально: удалить артефакт через 1 день
 
   deploy:
     name: Deploy
@@ -37,7 +40,7 @@ jobs:
 
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4  # Исправлено: v3 → v4
         with:
           name: production-files
           path: ./dist
@@ -47,3 +50,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          publish_branch: gh-pages  # Явное указание ветки для деплоя
