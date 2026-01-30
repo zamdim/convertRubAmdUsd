@@ -6,7 +6,7 @@ import { checkIsNumber } from 'src/utils/helpers/checkIsNumber';
 import useRequest from 'src/common/hooks/useRequest';
 import { getAllCurr } from 'src/common/api/requests/сurrency/currrencyAPI';
 import LoaderComponent from 'src/components/LoaderComponent/LoaderComponent';
-import { dateTimeForTable } from 'src/common/helpers/dateFunctions';
+import { dateForTable } from 'src/common/helpers/dateFunctions';
 
 const Calculate = () => {
   const [usdToAmd, setUsdToAmd] = React.useState<string | null>(null);
@@ -15,10 +15,8 @@ const Calculate = () => {
 
   const checkIsAll = usdToAmd && rubToAmd && sum;
 
-  const calc =
+  const result =
     checkIsAll && (Number(usdToAmd) / Number(rubToAmd)) * Number(sum);
-
-  const result = checkIsAll && (calc + calc * 0.06).toFixed(2);
 
   const {
     load: fetchCurr,
@@ -34,6 +32,15 @@ const Calculate = () => {
     fetchCurr();
   }, []);
 
+  function formatRublesIntl(amount: number) {
+    return new Intl.NumberFormat('ru-RU', {
+      style: 'currency',
+      currency: 'RUB',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  }
+
   const isLoadingPage = !data || isLoading;
 
   return isLoadingPage ? (
@@ -43,10 +50,12 @@ const Calculate = () => {
       <Text size="3xl">
         Конвертация долларов в рубли в центральном банке Армении
       </Text>
-      <Text size="2xl">
-        USDT/AMD: {data.usdToAmd} RUB/AMD: {data.rubToAmd}
+      <Text size="xl">
+        USDT/AMD: {data.usdToAmd}
         <br />
-        Время проверки {dateTimeForTable(data.rubToAmd)}
+        RUB/AMD: {data.rubToAmd}
+        <br />
+        Время проверки: {dateForTable(data.date)}
       </Text>
       <TextField
         label="Курс USD/AMD"
@@ -55,19 +64,19 @@ const Calculate = () => {
         onChange={({ value }) => checkIsNumber(value) && setUsdToAmd(value)}
       />
       <TextField
-        label="Курс USD/RUB"
+        label="Курс RUB/AMD"
         value={rubToAmd}
         type="number"
         onChange={({ value }) => checkIsNumber(value) && setRubToAmd(value)}
       />
       <TextField
-        label="Сумма выплаты в $, без 6%"
+        label="Сумма выплаты $"
         value={sum}
         type="number"
         onChange={({ value }) => checkIsNumber(value) && setSum(value)}
       />
       {result && (
-        <Text size="2xl">Сумма выплаты в рублях + 6% = {result} ₽</Text>
+        <Text size="2xl">Сумма выплаты = {formatRublesIntl(result)}</Text>
       )}
     </div>
   );
