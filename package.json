@@ -9,8 +9,7 @@
   "scripts": {
     "dev": "vite serve",
     "build": "vite build",
-    "eslint": "npx eslint --fix .eslintrc.cjs \"./src/**/*.{ts,tsx}\"",
-    "deploy": "gh-pages -d dist"
+    "eslint": "npx eslint --fix .eslintrc.cjs \"./src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@consta/charts": "^0.8.0",
