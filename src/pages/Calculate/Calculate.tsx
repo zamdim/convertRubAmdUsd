@@ -63,24 +63,27 @@ const Calculate = () => {
         <Text size="xl">Время проверки:</Text>
         <Text size="xl">{dateForTable(data.date)}</Text>
       </div>
-      <Button onClick={onNavigate} label="Проверить в ЦБ Армении" />
+      <Button onClick={onNavigate} label="Посмотреть в ЦБ Армении" />
       <TextField
         label="Курс USD/AMD"
         value={usdToAmd}
         type="number"
         onChange={({ value }) => checkIsNumber(value) && setUsdToAmd(value)}
+        incrementButtons={false}
       />
       <TextField
         label="Курс RUB/AMD"
         value={rubToAmd}
         type="number"
         onChange={({ value }) => checkIsNumber(value) && setRubToAmd(value)}
+        incrementButtons={false}
       />
       <TextField
         label="Сумма выплаты $"
         value={sum}
         type="number"
         onChange={({ value }) => checkIsNumber(value) && setSum(value)}
+        incrementButtons={false}
       />
       {result && (
         <Text size="2xl">Сумма выплаты = {formatRublesIntl(result)}</Text>
