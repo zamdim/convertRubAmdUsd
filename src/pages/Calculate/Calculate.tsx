@@ -7,6 +7,7 @@ import useRequest from 'src/common/hooks/useRequest';
 import { getAllCurr } from 'src/common/api/requests/сurrency/currrencyAPI';
 import LoaderComponent from 'src/components/LoaderComponent/LoaderComponent';
 import { dateForTable } from 'src/common/helpers/dateFunctions';
+import { Button } from '@consta/uikit/Button';
 
 const Calculate = () => {
   const [usdToAmd, setUsdToAmd] = React.useState<string | null>(null);
@@ -43,20 +44,26 @@ const Calculate = () => {
 
   const isLoadingPage = !data || isLoading;
 
+  const onNavigate = () => {
+    window.open('https://www.cba.am/en/', '_blank');
+  };
+
   return isLoadingPage ? (
     <LoaderComponent fullHeight={true} />
   ) : (
     <div className={styles.root}>
-      <Text size="3xl">
-        Конвертация долларов в рубли в центральном банке Армении
+      <Text className={styles.title} size="3xl">
+        Конвертация долларов в рубли ЦБ Армении
       </Text>
-      <Text size="xl">
-        USDT/AMD: {data.usdToAmd}
-        <br />
-        RUB/AMD: {data.rubToAmd}
-        <br />
-        Время проверки: {dateForTable(data.date)}
-      </Text>
+      <div className={styles.currency}>
+        <Text size="xl">USDT/AMD:</Text>
+        <Text size="xl">{data.usdToAmd}</Text>
+        <Text size="xl">RUB/AMD:</Text>
+        <Text size="xl">{data.rubToAmd}</Text>
+        <Text size="xl">Время проверки:</Text>
+        <Text size="xl">{dateForTable(data.date)}</Text>
+      </div>
+      <Button onClick={onNavigate} label="Проверить в ЦБ Армении" />
       <TextField
         label="Курс USD/AMD"
         value={usdToAmd}

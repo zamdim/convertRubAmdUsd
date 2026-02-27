@@ -80,9 +80,27 @@ const handleResponse = async (res: any) => {
   }
 };
 
+const handleResponseJson = async (res: any) => {
+  const status = String(res.status).substring(0, 1);
+  if (status === '2') {
+    try {
+      return (await res.text()) as Promise<any>;
+    } catch (e) {
+      console.log(e?.message);
+    }
+  } else {
+    return Promise.reject(res);
+  }
+};
+
 const handleError = async (res: any) => {
   console.log(res);
   throw (await res.json()) as Promise<any>;
+};
+
+const handleErrorJson = async (res: any) => {
+  console.log(res);
+  throw (await res) as Promise<any>;
 };
 
 export async function downloadPDFFile(response: any) {
@@ -112,6 +130,10 @@ export const postToken = (url: string, data?: any) =>
     .catch(handleError);
 export const get = (url: string) =>
   fetch(url, buildParamsPost('GET')).then(handleResponse).catch(handleError);
+export const getJson = (url: string) =>
+  fetch(url, buildParamsPost('GET'))
+    .then(handleResponseJson)
+    .catch(handleErrorJson);
 export const put = (url: string) =>
   fetch(myLocation + url, buildParams('PUT'))
     .then(handleResponse)
